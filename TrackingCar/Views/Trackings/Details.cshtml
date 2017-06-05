@@ -1,0 +1,58 @@
+﻿@model TrackingCar.Models.Tracking
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tracking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Camera.Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Camera.Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaHora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaHora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Velocidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Velocidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FotoUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FotoUrl)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

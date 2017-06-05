@@ -1,0 +1,399 @@
+﻿@model IEnumerable<TrackingCar.Models.Tracking>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Estadísticas
+            <small>Panel de Control</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+            <li class="active">Estadísticas</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>600<sup style="font-size: 20px">p/h</sup></h3>
+
+                        <p>Vehiculos</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-model-s"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más Info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>13:00<sup style="font-size: 20px">hs</sup></h3>
+
+                        <p>Mayor Transito</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-clock"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más Info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3>8</h3>
+
+                        <p>Camaras</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-videocam"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más Info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>Cam 6</h3>
+
+                        <p>Mayor Transito</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-connection-bars"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más Info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Estadisticas Anuales</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="text-center">
+                                    <strong>Trafico - 2017 vs 2016</strong>
+                                </p>
+
+                                <div class="chart">
+                                    <!-- Sales Chart Canvas -->
+                                    <canvas id="salesChart" style="height: 180px;"></canvas>
+                                </div>
+                                <!-- /.chart-responsive -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-4">
+                                <p class="text-center">
+                                    <strong>Promedio Anual por Camara</strong>
+                                </p>
+
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="chart-responsive">
+                                                <canvas id="pieChart" height="150"></canvas>
+                                            </div>
+                                            <!-- ./chart-responsive -->
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-md-4">
+                                            <ul class="chart-legend clearfix">
+                                                <li><i class="fa fa-circle-o text-red"></i> Camara 1</li>
+                                                <li><i class="fa fa-circle-o text-green"></i> Camara 2</li>
+                                                <li><i class="fa fa-circle-o text-yellow"></i> Camara 3</li>
+                                                <li><i class="fa fa-circle-o text-aqua"></i> Camara 4</li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- ./box-body -->
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="description-block border-right">
+                                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
+                                    <h5 class="description-header">3521000</h5>
+                                    <span class="description-text">TOTAL ANUAL</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="description-block border-right">
+                                    <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
+                                    <h5 class="description-header">2030202</h5>
+                                    <span class="description-text">PRIMER SEMESTRE</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="description-block border-right">
+                                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
+                                    <h5 class="description-header">1490798</h5>
+                                    <span class="description-text">SEGUNDO SEMESTRE</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="description-block">
+                                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
+                                    <h5 class="description-header">120000</h5>
+                                    <span class="description-text">PROMEDIO MENSUAL</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+
+        <!-- LINE CHART      Estadísticas Mensuales           -->
+
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="text-center">
+                                <h3 class="box-title">Estadísticas Mensuales</h3>
+
+                                <div class="box-body">
+                                    <div class="chart">
+                                        <canvas id="barChart" style="height:230px"></canvas>
+                                    </div>
+                                </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-4">
+                            <p class="text-center">
+                                <strong>Promedio Mensual por Camara</strong>
+                            </p>
+
+                            <div class="progress-group">
+                                <span class="progress-text">Camara 1</span>
+                                <span class="progress-number"><b>16000</b></span>
+
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-light-blue" style="width: 16%"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                            <div class="progress-group">
+                                <span class="progress-text">Camara 2</span>
+                                <span class="progress-number"><b>31000</b></span>
+
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-light-blue" style="width: 31%"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                            <div class="progress-group">
+                                <span class="progress-text">Camara 3</span>
+                                <span class="progress-number"><b>48000</b></span>
+
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-green" style="width: 48%"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                            <div class="progress-group">
+                                <span class="progress-text">Camara 4</span>
+                                <span class="progress-number"><b>25000</b></span>
+
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-red" style="width: 25%"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- LINE CHART      Estadísticas Diarias           -->
+            
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="text-center">
+                                <h3 class="box-title">Estadísticas Diarias</h3>
+
+                            <div class="box-body">
+                                <div class="chart">
+                                    <canvas id="lineChart" style="height:250px"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-4">
+                            <p class="text-center">
+                                <strong>Promedio Diario por Camara</strong>
+                            </p>
+
+                            <div class="progress-group">
+                                <span class="progress-text">Camara 1</span>
+                                <span class="progress-number"><b>16000</b></span>
+
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-light-blue" style="width: 16%"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                            <div class="progress-group">
+                                <span class="progress-text">Camara 2</span>
+                                <span class="progress-number"><b>31000</b></span>
+
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-light-blue" style="width: 31%"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                            <div class="progress-group">
+                                <span class="progress-text">Camara 3</span>
+                                <span class="progress-number"><b>48000</b></span>
+
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-green" style="width: 48%"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                            <div class="progress-group">
+                                <span class="progress-text">Camara 4</span>
+                                <span class="progress-number"><b>25000</b></span>
+
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-red" style="width: 25%"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </div>
+            </div>
+        </div>
+                    <!-- /.box -->
+
+</section>
+</div>
+
+        @*<h2>Index</h2>
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Camera.Numero)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FechaHora)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Velocidad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Patente)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FotoUrl)
+                    </th>
+                    <th></th>
+                </tr>
+
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Camera.Numero)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaHora)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Velocidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Patente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FotoUrl)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+                    </td>
+                </tr>
+            }
+
+            </table>*@
