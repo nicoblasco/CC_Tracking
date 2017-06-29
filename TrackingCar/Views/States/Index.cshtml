@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<TrackingCar.Models.State>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Provincias";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear una nueva", "Create")
 </p>
 <table class="table">
     <tr>
@@ -29,9 +30,9 @@
             @Html.DisplayFor(modelItem => item.Descripcion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StateID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StateID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.StateID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.StateID }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.StateID }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.StateID })
         </td>
     </tr>
 }

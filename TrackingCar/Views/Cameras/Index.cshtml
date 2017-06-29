@@ -1,81 +1,157 @@
 ﻿@model IEnumerable<TrackingCar.Models.Camera>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Camaras";
 }
 
-<h2>Index</h2>
+  <!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Camaras
+            <small>Gestión</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+            <li><a href="#">Camaras</a></li>
+            <li class="active">Gestión</li>
+        </ol>
+    </section>
+    @*<p>
+        @Html.ActionLink("Nueva Camara", "Create")
+    </p>*@
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.City.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Country.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Numero)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MapCoordenadaX)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MapCoordenadaY)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Point)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Limite)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.City.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Numero)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Direccion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MapCoordenadaX)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MapCoordenadaY)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Point)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Limite)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CameraID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CameraID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CameraID })
-        </td>
-    </tr>
-}
+    @*<div id="map_wrapper">
+        <div id="map_canvas" class="mapping"></div>
+    </div>*@
 
-</table>
+    <div id="map" style="width: 100%; height: 500px;"></div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Listado de Camaras</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Ciudad</th>
+                                    <th>Provincia</th>
+                                    <th>Pais</th>
+                                    <th>Número</th>
+                                    <th>Dirreción</th>
+                                    <th>Coordenada X</th>
+                                    <th>Coordenada Y</th>
+                                    <th>Point</th>
+                                    <th>Limite</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model) {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.City.Descripcion)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Country.Descripcion)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.State.Descripcion)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Numero)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Direccion)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MapCoordenadaX)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MapCoordenadaY)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Point)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Limite)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.CameraID }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.CameraID }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.CameraID })
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                                @*<tfoot>
+                                    <tr>
+                                        <th>Ciudad</th>
+                                        <th>Provincia</th>
+                                        <th>Pais</th>
+                                        <th>Número</th>
+                                        <th>Dirreción</th>
+                                        <th>Coordenada X</th>
+                                        <th>Coordenada Y</th>
+                                        <th>Point</th>
+                                        <th>Limite</th>
+                                    </tr>
+                                </tfoot>*@
+                            </table>
+                        </div>
+            <!-- /.box-body -->
+                    </div>
+          <!-- /.box -->
+                </div>
+        <!-- /.col -->
+            </div>
+      <!-- /.row -->
+        </section>
+    </div>
+@section Scripts  {
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjrgoKUaLIRTd5or79_oawSNpCRVYsuyI&callback=initMap">
+</script>
+<script>
+    window.onload = initialize;
+    function initialize() {
+        var bounds = new google.maps.LatLngBounds();
+        var options = {
+            zoom : 14,
+            mapTypeId: google.maps.MapTypeId.TERRAIN
+        };
+        var googleMap = new google.maps.Map($("#map")[0], options);
+        var infoWindow = new google.maps.InfoWindow({ content: "Cargando..." });
+
+
+        @foreach (var marker in Model)
+            {
+                <text>
+                    var point = new google.maps.LatLng(@marker.MapCoordenadaX , @marker.MapCoordenadaY);
+                bounds.extend(point);
+
+                var description = '<b>Camara: </b> @marker.Numero <BR> <b>Dirección: </b> @marker.Direccion <BR><b>Sentido: </b>@marker.Point<BR><b>Limite de Velocidad: </b>@marker.Limite'+' km/h'
+
+                var marker = new google.maps.Marker({
+                    position: point,
+                    map: googleMap,
+                    html: description
+                });
+
+                google.maps.event.addListener(marker, "click", function () {
+                    infoWindow.setContent(this.html);
+                    infoWindow.open(googleMap, this);
+                });
+                </text>
+            }
+            googleMap.fitBounds(bounds);
+        };
+</script>
+    }

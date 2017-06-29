@@ -1,45 +1,49 @@
 ﻿@model IEnumerable<TrackingCar.Models.City>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Ciudades";
 }
 
-<h2>Index</h2>
+<div class="content-wrapper">
+    <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Country.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Crear", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Country.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CityID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CityID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CityID })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.CityID }) |
+                    @Html.ActionLink("Detalle", "Details", new { id = item.CityID }) |
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.CityID })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>

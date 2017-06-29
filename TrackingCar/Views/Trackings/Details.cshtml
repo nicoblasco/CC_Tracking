@@ -1,58 +1,87 @@
 ﻿@model TrackingCar.Models.Tracking
 
 @{
-    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Estadisticas";
 }
 
-<h2>Details</h2>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Camaras
+            <small>Detalle</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+            <li><a href="#">Camaras</a></li>
+            <li class="active">Detalle General</li>
+            <li class="active">Detalle</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Número de Camara
+                </dt>
 
-<div>
-    <h4>Tracking</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Camera.Numero)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Camera.Numero)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Camera.Numero)
-        </dd>
+                <dt>
+                    Dirección
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaHora)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Camera.Direccion)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FechaHora)
-        </dd>
+                <dt>
+                    Fecha y Hora
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Velocidad)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FechaHora)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Velocidad)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Velocidad) 
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Patente)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Velocidad)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Patente)
-        </dd>
+                <dt>
+                    Máxima Velocidad
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FotoUrl)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Camera.Limite )
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Patente)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FotoUrl)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Patente)
+                </dd>
 
-    </dl>
+                <dt>
+                    Foto
+                </dt>
+
+                <dd>
+                    <img src="@Url.Content("~/Content/img/JDF703.jpg")" alt="Image" class="img-thumbnail" width="400" height="400">
+                </dd>
+                
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Volver", "Estadisticas")
+        </p>
+        </section>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

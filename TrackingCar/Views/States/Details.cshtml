@@ -1,7 +1,8 @@
 ﻿@model TrackingCar.Models.State
 
 @{
-    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Detalle";
 }
 
 <h2>Details</h2>
@@ -29,6 +30,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.StateID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.StateID }) |
+    @Html.ActionLink("Volver", "Index")
 </p>

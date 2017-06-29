@@ -33,6 +33,12 @@ namespace TrackingCar
                       "~/Content/bootstrap-datepicker.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/Logincss").Include(
+                      "~/Content/bootstrap.css",
+                      "~/Content/Login.css",
+                      "~/Content/bootstrap-datepicker.css",
+                      "~/Content/site.css"));
+
             bundles.Add(new StyleBundle("~/Content/fontawesome").Include(
                       "~/Content/font-awesome.css",
                       "~/Content/ionicons.min.css"));

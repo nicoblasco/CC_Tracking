@@ -3,88 +3,89 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="content-wrapper">
+    <h2>Details</h2>
 
-<h2>Details</h2>
+    <div>
+        <h4>Camera</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.City.Descripcion)
+            </dt>
 
-<div>
-    <h4>Camera</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.City.Descripcion)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.City.Descripcion)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.City.Descripcion)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Country.Descripcion)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Country.Descripcion)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Country.Descripcion)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Country.Descripcion)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.State.Descripcion)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.State.Descripcion)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.State.Descripcion)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.State.Descripcion)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Numero)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Numero)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Numero)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Numero)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Direccion)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Direccion)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MapCoordenadaX)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MapCoordenadaX)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MapCoordenadaX)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.MapCoordenadaX)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MapCoordenadaY)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MapCoordenadaY)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MapCoordenadaY)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.MapCoordenadaY)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Point)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Point)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Point)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Point)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Limite)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Limite)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Limite)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Limite)
-        </dd>
-
-    </dl>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CameraID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CameraID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

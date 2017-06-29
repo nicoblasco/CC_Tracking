@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Tracking Car", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Seguimiento y Estadisticas vehicular", "Index", "Trackings", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 @*<ul class="nav navbar-nav">
@@ -47,75 +47,89 @@
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
-
-            <!-- MENU DE NAVEGACION -->
+            <!-- MENU DE BUSQUEDA -->
             <ul class="sidebar-menu">
-                <li class="header">MENU DE NAVEGACION</li>
-                <li class="active treeview">
-                    <a href="pages/widgets.html">
-                        <i class="fa fa-pie-chart"></i> <span>Estadisticas</span>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-files-o"></i>
-                        <span>Reportes</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Vehiculos</a></li>
-                        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Camaras</a></li>
-                        <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                    </ul>
-                </li>
-
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-video-camera"></i>
-                        <span>Camaras</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Estadisticas</a></li>
-                        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Gestión</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-laptop"></i>
-                        <span>Sistema</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Paises</a></li>
-                        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Provincias</a></li>
-                        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Localidades</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-users"></i>
-                        <span>Usuarios</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Perfil</a></li>
-                        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Gestión</a></li>
-                        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Roles</a></li>
-                        
-                    </ul>
-                </li>
-
+                <li class="header">MENU DE CONSULTAS</li>
+                <div class="input-group" style="padding-left: 15px; padding-right: 12px">
+                    <input type="text" name="q" class="form-control" placeholder="Ingrese Patente">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
             </ul>
-        </section>
+                <!-- MENU DE NAVEGACION -->
+                <ul class="sidebar-menu">
+                    <li class="header">MENU DE NAVEGACION</li>
+
+                    <li class="active treeview">
+                        <a href="@Url.Action("Index","Trackings")">
+                            <i class="fa fa-pie-chart"></i> <span>Estadisticas</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-files-o"></i>
+                            <span>Reportes</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Vehiculos</a></li>
+                            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Camaras</a></li>
+                            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-video-camera"></i>
+                            <span>Camaras</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Estadisticas","Trackings")"><i class="fa fa-circle-o"></i> Detalle General</a></li>
+                            <li><a href="@Url.Action("Index","Cameras")"> <i class="fa fa-circle-o"></i> Gestión</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-laptop"></i>
+                            <span>Sistema</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="header">PARAMETROS</li>
+                            <li><a href="@Url.Action("Index","Countries")"><i class="fa fa-circle-o"></i> Paises</a></li>
+                            <li><a href="@Url.Action("Index","States")"><i class="fa fa-circle-o"></i> Provincias</a></li>
+                            <li><a href="@Url.Action("Index","Cities")"><i class="fa fa-circle-o"></i> Localidades</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-users"></i>
+                            <span>Usuarios</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Perfil</a></li>
+                            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Gestión</a></li>
+                            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Roles</a></li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+
+</section>
    </aside>
 
             @RenderBody()
@@ -309,6 +323,7 @@
 
     barChartOptions.datasetFill = false;
     barChart.Bar(areaBarChartData, barChartOptions);
+
 
     </script>
 </body>

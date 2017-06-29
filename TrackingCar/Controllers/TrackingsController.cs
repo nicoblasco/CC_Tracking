@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -18,8 +19,70 @@ namespace TrackingCar.Controllers
         // GET: Trackings
         public ActionResult Index()
         {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("LogIn", "Account");
+            }
+
             var trackings = db.Trackings.Include(t => t.Camera);
             return View(trackings.ToList());
+        }
+        // GET: Trackings/Estadisticas
+        //public ActionResult Estadisticas(int? page)
+        //{
+        //    if (!Request.IsAuthenticated)
+        //    {
+        //        return RedirectToAction("LogIn", "Account");
+        //    }
+
+        //    var trackings = db.Trackings.Include(t => t.Camera);
+        //    return View(trackings.ToList());
+        //}
+
+        public ViewResult Estadisticas(string sortOrder, string currentFilter, string searchString, int? page)
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var trackings = from s in db.Trackings
+                           select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                trackings = trackings.Where(s => s.Patente.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    trackings = trackings.OrderByDescending(s => s.Patente);
+                    break;
+                case "Date":
+                    trackings = trackings.OrderBy(s => s.FechaHora);
+                    break;
+                case "date_desc":
+                    trackings = trackings.OrderByDescending(s => s.FechaHora);
+                    break;
+                default:  // ID ascending 
+                    trackings = trackings.OrderBy(s => s.ID);
+                    break;
+            }
+
+            int pageSize = 15;
+            int pageNumber = (page ?? 1);
+            return View(trackings.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Trackings/Details/5
