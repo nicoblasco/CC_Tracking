@@ -650,7 +650,7 @@ function _init() {
                 //Add loading overlay
                 start(box);
 
-                //Perform ajax call
+                //Perform e call
                 box.find(".box-body").load(settings.source, function () {
                     done(box);
                 });
@@ -663,6 +663,7 @@ function _init() {
 
             settings.onLoadStart.call(box);
         }
+
 
         function done(box) {
             //Remove overlay and loading img
@@ -759,6 +760,5 @@ function _init() {
         });
     };
 }(jQuery));
-
 
 

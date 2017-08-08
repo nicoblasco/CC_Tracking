@@ -1,0 +1,146 @@
+﻿@model TrackingCar.Models.Tracking
+
+@{
+    ViewBag.Title = "Geolocalización";
+    //Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>@Model.Patente</h2>*@
+<div>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Geolocalización</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row" style="margin-right:0; margin-left:0">
+                            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjrgoKUaLIRTd5or79_oawSNpCRVYsuyI&callback=initialize"> </script>
+                            <script type="text/javascript">
+                                function initialize() {
+                                    var bounds = new google.maps.LatLngBounds();
+                                    var options = {
+                                        mapTypeId: google.maps.MapTypeId.TERRAIN,
+                                        zoom: 20
+                                    };
+                                    var googleMap = new google.maps.Map($("#map")[0], options);
+                                    var infoWindow = new google.maps.InfoWindow({ content: "Cargando..." });
+
+                                    var point = new google.maps.LatLng( @Html.DisplayFor(model => @model.Camera.MapCoordenadaX) , @Html.DisplayFor(model => @model.Camera.MapCoordenadaY));
+                                    bounds.extend(point);
+
+                                    var description = '<b>Camara: </b> @Html.DisplayFor(model => @model.Camera.Numero) <BR> <b>Fecha: </b> @Html.DisplayFor(model => @model.FechaHora) <BR> <b>Dirección: </b> @Html.DisplayFor(model => @model.Camera.Direccion) <BR><b>Sentido: </b>@Html.DisplayFor(model => @model.Camera.Point)<BR><b>Velocidad: </b>@Html.DisplayFor(model => @model.Velocidad)'+' km/h <BR> <b>Limite de Velocidad: </b>@Html.DisplayFor(model => @model.Camera.Limite)'+' km/h'
+
+                                    var vStrFechaHora = '@Html.DisplayFor(model => @model.FechaHora)';
+
+
+
+                                    var vDiferencia= calcularDias(vStrFechaHora);
+
+
+
+                                    var mIcon = {
+                                        path: google.maps.SymbolPath.CIRCLE,
+                                        fillOpacity: 1,
+                                        fillColor: '#CD5C5C',
+                                        strokeOpacity: 1,
+                                        strokeWeight: 1,
+                                        strokeColor: '#fff',
+                                        scale: 20
+                                    };
+
+
+                                    var marker = new google.maps.Marker({
+                                        position: point,
+                                        map: googleMap,
+                                        title: vStrFechaHora,
+                                        icon: mIcon,
+                                        label: {color: '#fff', fontSize: '12px', fontWeight: '600', text: vDiferencia},
+                                        html: description
+                                    });
+
+                                    google.maps.event.addListener(marker, "click", function () {
+                                        infoWindow.setContent(this.html);
+                                        infoWindow.open(googleMap, this);
+                                    });
+
+                                    googleMap.fitBounds(bounds);
+                                    var listener = google.maps.event.addListener(googleMap, "idle", function() {
+                                        googleMap.setZoom(googleMap.getZoom() - 4);
+                                        google.maps.event.trigger(googleMap, 'resize');
+                                        google.maps.event.removeListener(listener);
+                                    });
+
+                                }
+
+
+                                function calcularDias(fechaIni)
+                                {
+                                    var cadena;
+                                    var fechaIni = moment(fechaIni, "DD/MM/YYYY HH:mm:ss");
+                                    var fechaActual = moment();
+
+                                    var diff = fechaActual.diff(fechaIni, 'd');
+
+
+                                    if (diff > 60 ) 
+                                    {
+                                        cadena = '+60d'
+                                    }
+                                    else
+                                    {
+                                        if (diff>0)
+                                        {
+                                            cadena = String(diff)+'d';
+                                        }
+                                        else
+                                        {
+                                            //Horas
+                                            var diffhora = fechaActual.diff(fechaIni, 'h');
+                                            if (diffhora > 0)
+                                            {
+                                                cadena = String(diffhora)+'h';
+                                            }
+                                            else
+                                            {
+                                                //Minutos
+                                                var diffmin = fechaActual.diff(fechaIni, 'm');
+                                                if (diffmin > 0)
+                                                {
+                                                    cadena = String(diffmin)+'m';
+                                                }
+                                                else
+                                                {
+                                                    var diffseg = fechaActual.diff(fechaIni, 's');
+                                                    cadena = String(diffseg)+'s';
+                                                }
+                                            }
+
+                                        }
+                                        
+                                    }
+                                    
+                                    return cadena;
+                                }
+
+                             </script>
+
+
+
+                            <div id="map" style="width: 100%; height: 500px;"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

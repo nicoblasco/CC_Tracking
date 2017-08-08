@@ -27,17 +27,7 @@ namespace TrackingCar.Controllers
             var trackings = db.Trackings.Include(t => t.Camera);
             return View(trackings.ToList());
         }
-        // GET: Trackings/Estadisticas
-        //public ActionResult Estadisticas(int? page)
-        //{
-        //    if (!Request.IsAuthenticated)
-        //    {
-        //        return RedirectToAction("LogIn", "Account");
-        //    }
 
-        //    var trackings = db.Trackings.Include(t => t.Camera);
-        //    return View(trackings.ToList());
-        //}
 
         public ViewResult Estadisticas(string sortOrder, string currentFilter, string searchString, int? page)
         {
@@ -63,6 +53,10 @@ namespace TrackingCar.Controllers
             {
                 trackings = trackings.Where(s => s.Patente.Contains(searchString));
             }
+            else
+            {
+                trackings = trackings.OrderByDescending(s => s.FechaHora);
+            }
 
             switch (sortOrder)
             {
@@ -70,19 +64,54 @@ namespace TrackingCar.Controllers
                     trackings = trackings.OrderByDescending(s => s.Patente);
                     break;
                 case "Date":
-                    trackings = trackings.OrderBy(s => s.FechaHora);
+                    trackings = trackings.OrderByDescending(s => s.FechaHora);
                     break;
                 case "date_desc":
                     trackings = trackings.OrderByDescending(s => s.FechaHora);
                     break;
+                case "id":
+                    trackings = trackings.OrderByDescending(s => s.ID);
+                    break;
                 default:  // ID ascending 
-                    trackings = trackings.OrderBy(s => s.ID);
+                    trackings = trackings.OrderByDescending(s => s.FechaHora);
                     break;
             }
 
             int pageSize = 15;
             int pageNumber = (page ?? 1);
             return View(trackings.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult Maps (int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Tracking tracking = db.Trackings.Find(id);
+            if (tracking == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_Maps",tracking);
+            //return Json(new { foo = "bar", baz = "Blech" });
+        }
+
+        public ActionResult MapPatentes(string strPatente)
+        {
+            if (String.IsNullOrEmpty(strPatente))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var trackings = db.Trackings.Where(x => x.Patente == strPatente).FirstOrDefault();
+
+            if (trackings == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_Maps", trackings);
+            //return Json(new { foo = "bar", baz = "Blech" });
         }
 
         // GET: Trackings/Details/5
